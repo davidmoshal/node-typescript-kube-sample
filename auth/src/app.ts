@@ -7,4 +7,8 @@ app.use(json());
 app.set("trust proxy", true);
 app.use(SignupRoute);
 
+// NOTE: we're exporting app BEFORE listening
+
 export { app };
+
+

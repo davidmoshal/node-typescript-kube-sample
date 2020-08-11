@@ -11,11 +11,14 @@ router.post(
       .not()
       .isEmpty()
       .withMessage("First Name is required"),
+
     body("email").isEmail().withMessage("Email must be valid"),
+
     body("password")
       .trim()
       .isLength({ min: 6 })
       .withMessage("Password must be minimum of 6 characters"),
+
     check("password").custom((val, { req }) => {
       if (val !== req.body.confirmPassword) {
         throw new Error("Passwords don't match");

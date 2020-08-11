@@ -2,7 +2,7 @@ import request from "supertest";
 import { app } from "../../app";
 
 it("Should not allow to create user without first name", async () => {
-  return request(app)
+  const x = request(app)
     .post("/api/users/signup")
     .send({
       lastName: "Abc",
@@ -10,7 +10,9 @@ it("Should not allow to create user without first name", async () => {
       password: "12345678",
       confirmPassword: "12345678",
     })
-    .expect(400);
+  x.expect(400)
+
+  return x;
 });
 
 it("Should not allow to create user with invalid email", async () => {
